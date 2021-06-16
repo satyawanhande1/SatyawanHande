@@ -13,21 +13,6 @@ namespace WKPOSTerminal.Tests.Controllers
     [TestClass]
     public class ValuesControllerTest
     {
-        [TestMethod]
-        public void Get()
-        {
-            // Arrange
-            ValuesController controller = new ValuesController();
-
-            // Act
-            IEnumerable<string> result = controller.Get();
-
-            // Assert
-            Assert.IsNotNull(result);
-            Assert.AreEqual(2, result.Count());
-            Assert.AreEqual("value1", result.ElementAt(0));
-            Assert.AreEqual("value2", result.ElementAt(1));
-        }
 
         [TestMethod]
         public void GetById()
@@ -36,46 +21,16 @@ namespace WKPOSTerminal.Tests.Controllers
             ValuesController controller = new ValuesController();
 
             // Act
-            string result = controller.Get(5);
+            string result = controller.Get("ABCDABA");
+            string result2 = controller.Get("CCCCCCC");
+            string result3 = controller.Get("ABCD");
 
             // Assert
-            Assert.AreEqual("value", result);
+            Assert.AreEqual("13.25", result);
+            Assert.AreEqual("6", result2);
+            Assert.AreEqual("7.25", result3);
         }
 
-        [TestMethod]
-        public void Post()
-        {
-            // Arrange
-            ValuesController controller = new ValuesController();
-
-            // Act
-            controller.Post("value");
-
-            // Assert
-        }
-
-        [TestMethod]
-        public void Put()
-        {
-            // Arrange
-            ValuesController controller = new ValuesController();
-
-            // Act
-            controller.Put(5, "value");
-
-            // Assert
-        }
-
-        [TestMethod]
-        public void Delete()
-        {
-            // Arrange
-            ValuesController controller = new ValuesController();
-
-            // Act
-            controller.Delete(5);
-
-            // Assert
-        }
+       
     }
 }
